@@ -1,10 +1,3 @@
-"""
-验证码识别
-
-[原作者 GitHub仓库](https://github.com/WindrunnerMax/SWVerifyCode)
-
-"""
-
 import numpy as np
 import cv2
 
@@ -69,19 +62,14 @@ def captcha(img: bytes) -> str:
     return result
 
 
-class Convert(object):
-    def __init__(self):
-        super(Convert, self).__init__()
-
+class Convert:
     def _get_dynamic_binary_image(self, img):
         """
         自适应阀值二值化
         """
         img = cv2.imdecode(np.frombuffer(img, np.uint8), cv2.IMREAD_COLOR)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        img = cv2.adaptiveThreshold(
-            img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 1
-        )
+        img = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 1)
 
         # 低于阈值的像素点灰度值置为0；高于阈值的值置为参数3
         # _,img = cv2.threshold(img, 125, 255, cv2.THRESH_BINARY)
@@ -136,19 +124,13 @@ class Convert(object):
                     if x == 0:  # 左上顶点,4邻域
                         # 中心点旁边3个点
                         sum = (
-                            int(cur_pixel)
-                            + int(img[x, y + 1])
-                            + int(img[x + 1, y])
-                            + int(img[x + 1, y + 1])
+                            int(cur_pixel) + int(img[x, y + 1]) + int(img[x + 1, y]) + int(img[x + 1, y + 1])
                         )
                         if sum <= 2 * 245:
                             img[x, y] = 0
                     elif x == height - 1:  # 右上顶点
                         sum = (
-                            int(cur_pixel)
-                            + int(img[x, y + 1])
-                            + int(img[x - 1, y])
-                            + int(img[x - 1, y + 1])
+                            int(cur_pixel) + int(img[x, y + 1]) + int(img[x - 1, y]) + int(img[x - 1, y + 1])
                         )
                         if sum <= 2 * 245:
                             img[x, y] = 0
@@ -167,19 +149,13 @@ class Convert(object):
                     if x == 0:  # 左下顶点
                         # 中心点旁边3个点
                         sum = (
-                            int(cur_pixel)
-                            + int(img[x + 1, y])
-                            + int(img[x + 1, y - 1])
-                            + int(img[x, y - 1])
+                            int(cur_pixel) + int(img[x + 1, y]) + int(img[x + 1, y - 1]) + int(img[x, y - 1])
                         )
                         if sum <= 2 * 245:
                             img[x, y] = 0
                     elif x == height - 1:  # 右下顶点
                         sum = (
-                            int(cur_pixel)
-                            + int(img[x, y - 1])
-                            + int(img[x - 1, y])
-                            + int(img[x - 1, y - 1])
+                            int(cur_pixel) + int(img[x, y - 1]) + int(img[x - 1, y]) + int(img[x - 1, y - 1])
                         )
 
                         if sum <= 2 * 245:

@@ -1,12 +1,12 @@
 [project]
 name = "xtu-edu-captcha-solver"
-version = "0.0.1"
+version = "0.0.2"
 description = "湘潭大学教务系统验证码识别"
 authors = [{ name = "YangRucheng", email = "admin@yangrucheng.top" }]
-dependencies = ["httpx>0.28.0"]
+dependencies = ["httpx>0.28.0", "opencv-python>=4.10.0"]
 requires-python = ">=3.10"
 readme = "README.md"
-license = { text = "AGPL-3.0" }
+license = { text = "MIT" }
 
 [project.urls]
 homepage = "https://github.com/xtu-org/xtu-edu-captcha"
