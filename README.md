@@ -3,11 +3,13 @@
 ## 安装
 
 从 PyPI 安装：
+
 ```bash
 pip install xtu-edu-captcha-solver
 ```
 
 从 GitHub 安装：
+
 ```bash
 pip install git+https://github.com/xtu-org/xtu-edu-captcha-solver.git@main#egg=xtu-edu-captcha-solver
 ```
@@ -38,7 +40,7 @@ async def main():
 
 ## 开源协议
 
-本仓库使用 [MIT](#) 协议，注意事项：
+本仓库使用 [MIT](https://mit-license.org) 协议，注意事项：
 
 本软件按“现状”提供，不提供任何形式的明示或暗示的保证，包括但不限于对适销性、特定用途的适用性和非侵权性的保证。
 在任何情况下，作者或版权持有人均不对任何索赔、损害或其他责任承担责任，无论是在合同诉讼、侵权行为还是其他方面，由本软件引起、或与本软件或使用或其它方式处理本软件有关。
